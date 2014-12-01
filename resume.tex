@@ -34,21 +34,35 @@
 %-----------------------------------------------------------
 %Custom commands
 \newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
-\newcommand{\resheading}[1]{{\large \parashade[.9]{sharpcorners}{\textbf{#1 \vphantom{p\^{E}}}}}}
+\newcommand{\resheading}[1]{{\large \parashade[.95]{roundcorners}{\textbf{#1 \vphantom{p\^{E}}}}}}
 \newcommand{\ressubheading}[4]{
 \begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
 		\textbf{#1} & #2 \\
 		\textit{#3} & \textit{#4} \\
 \end{tabular*}\vspace{-6pt}}
+\newcommand{\sickkids}[6]{
+\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+		\textbf{#1} & #2 \\
+		\textit{#3} & \textit{#4} \\
+		 & \textit{#5} \\
+		 & \textit{#6} \\
+\end{tabular*}\vspace{-6pt}}
+% \newcommand{\ressubheadingnodate}[4]{
+% \begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+% 		\textbf{#1} \\
+% \end{tabular*}\vspace{-6pt}}
+\newcommand{\ressubheadingnodate}[1]{
+		\textbf{#1} \\
+}
 %-----------------------------------------------------------
 
 
 \begin{document}
 
 \begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
-\textbf{\Large David Grant}  & 604-555-5555\\
-\#666-1234 Main Street &  davidgrant-at-gmail.com \\
-Vancouver, BC A1B 2C3 & http://www.davidgrant.ca\\
+\textbf{\Large James Gleeson}  & 647-298-9193\\
+499 Martha Street & jagleeso@gmail.com \\
+Bulrington, ON L7R 2R1 \\
 \end{tabular*}
 \\
 
@@ -57,16 +71,49 @@ Vancouver, BC A1B 2C3 & http://www.davidgrant.ca\\
 \resheading{Education}
 \begin{itemize}
 \item
-	\ressubheading{University of Waterloo}{Waterloo, ON}{M.A.Sc., Electrical Engineering (Grades: 80\%)}{Sep. 2002 - May. 2004}
+	\ressubheading{University of Toronto}{Toronto, ON}{M.Sc., Computer Science (Grades: 92\%)}{Sep. 2013 - Jan. 2015}
 	\begin{itemize}
-		\resitem{Relevant courses: Semiconductor Devices: Physics and Modelling, Digital VLSI Design, Amorphous Silicon, Mixed-signal modelling with VHDL-AMS}
+		\resitem{Advisor: Eyal de Lara}
+        \resitem{
+            My research so far has focused on operating system 
+            level solutions to mobile security problems that are efficient without 
+            sacrificing user experience, and transparent to avoid complecting existing 
+            application requirements.
+        }
+        \resitem{
+            \textbf{Memory Encryption on Mobile Devices.} \\
+            I measure the performance and energy tradeoffs of protecting against 
+            cold boot attacks on Android through the encryption of sensitive processes.  To 
+            support background applications running while encrypted, I swap encrypted DRAM 
+            pages into and out of a tightly managed decrypted secure memory.
+            I extend encryption of user-level application pages to kernel stacks 
+            to prevent leaking AES state, tracking page accesses inside kernel using 
+            in-kernel page faults.
+        }
 	\end{itemize}
 
 \item
-	\ressubheading{University of British Columbia}{Vancouver, BC}{B.A.Sc. Engineering Physics (Electrical Engineering Option)}{1997-2002}
+	\ressubheading{University of Waterloo}{Waterloo, ON}{H.B.Sc. Computer Science: Specialization in Bioinformatics}{2007-2012}
 	\begin{itemize}
-		\resitem{Graduated with Honors, \textbf{86\%} cumulative average, and Dean's Honour List each year.}
-		\resitem{Relevant courses: Solid-state physics, Quantum Mechanics, Semiconductor Devices (BJT, HBT, FET, analog IC layout and simulation), Digital Systems Design using VHDL, Waveguides and Photonics, RF, Analog/Digital Communications Systems, Analog Hardware Design}
+		\resitem{Graduated with with Distinction, \textbf{92\%} cumulative average}
+	\end{itemize}
+
+\end{itemize}
+
+\resheading{Publications}
+\begin{itemize}
+\item
+
+	\ressubheadingnodate{Refereed Publications}
+	\begin{itemize}
+		\resitem{
+            \textbf{Protecting Data on Smartphones and Tablets from Memory Attacks} \\
+            \textit{
+                Patrick J. Colp, Jiawen Zhang, James Gleeson, Sahil Suneja, Eyal de Lara, 
+                Himanshu Raj, Stefan Saroiu, Alec Wolman.
+            } \\
+            ASPLOS 2015 (To appear).
+        }
 	\end{itemize}
 
 \end{itemize}
@@ -74,136 +121,134 @@ Vancouver, BC A1B 2C3 & http://www.davidgrant.ca\\
 \resheading{Work Experience}
 \begin{itemize}
 \item
-	\ressubheading{D-Wave Systems}{Vancouver, BC}{Junior Research Scientist and Software Engineer}{May 2002 - Aug. 2002}
+
+	\ressubheading{Innovative Medicine, Mount Sinai Hopsital}{Toronto, ON}{Software Developer}{Oct. 2012 - Aug. 2012}
 	\begin{itemize}
-		\resitem{Implemented quantum computing algorithms in a JAVA quantum computer simulator, such as quantum Fourier transform, and the quantum eigenvalue finding algorithm.}
-		\resitem{Implemented algorithms for generating Hamiltonians for small molecules.}
+		\resitem{
+            Elicited requirements by sitting down with molecular biologists to formalize 
+            what heuristics they apply to determine genotypes from raw SNP data.
+        }
+		\resitem{
+            Constructed an in-house pipeline for processing raw SNP data into phenotypes 
+            (e.g. reactivity to drugs) that inform doctors to create customized therapeutic 
+            treatments.  
+        }
+        \resitem{
+            Pipeline was abstracted into a dependency graph of stages backed by database 
+            tables, allowing a declarative style of programming that maps well to real-time 
+            visualization of progress (per-stage table counts), and reports informing 
+            doctors how therapeutic recommendations were generated from raw SNP data.
+        }
 	\end{itemize}
 
-\item 
-	\ressubheading{EXI Wireless}{Richmond, BC}{Bluetooth Group Software and Hardware Engineer}{May 2001 - Aug. 2001}
+	\ressubheading{DemonWare}{Vancouver, BC}{Software Developer}{Sept. 2011 - Dec. 2011}
 	\begin{itemize}
-		%\resitem{Part of a group working to produce a Bluetooth-LAN Access Point and other OEM products.}
-		\resitem{Wrote firmware and PC software tools to implement an embedded FLASH/EPROM memory serial programmer for an Atmel Thumb AT91FR4081 processor.}
-		%\resitem{Wrote documentation for firmware programmers describing the hardware.}
-		\resitem{Tested, debugged, and fixed Bluetooth development boards with hardware problems.}
-		\resitem{Programmed an embedded serial command interface and memory peak/poke utilities.}
-		\resitem{Integrated EXI's patient monitoring system with Bluetooth wireless networking technology.}
+		\resitem{
+            Worked cooperatively and concurrently in a five person team, using Git version 
+            control to develop and merge features effectively, and JIRA to manage a pipeline of 
+            tasks
+        }
+        \resitem{
+            Quickly learned and utilized an in-house service-oriented Python framework to 
+            develop net services for games
+        }
+        \resitem{
+            Engineered a Bamboo integration test suite that involved compiling and packaging 
+            software into RPMs for rapid deployment, executing unit tests, and running an 
+            Erlang echo server for testing client/server interaction 
+        }
 	\end{itemize}
 
-\item
-	\ressubheading{EXI Wireless}{Richmond, BC}{RFID Tags Group Hardware Engineer}{Sep. 2000 - Dec. 2000}
+	\sickkids{The Hospital for Sick Children}{Toronto, ON}{Research Trainee in 
+    Bioinformatics}{Sept. 2011 - Dec. 2011}{May 2010 - Aug. 2010}{Sept. 2009 - Dec. 2009}
 	\begin{itemize}
-		\resitem{Managed a Bluetooth daughter-board project; created schematics and PCBs using OrCAD.}
-		\resitem{Created an embedded web server demo using a DOS Stamp single-board computer.}
-		\resitem{Designed and implemented an automated RFID Tag Tester.  Created schematics and PCB using OrCAD, and programmed GPIB and serial port communication routines in C.}
-		\resitem{Tested RF ID tags using RF equipment (spectrum analyzers, attenuators, TEM cells, antennae).}
-		\resitem{Programmed GPIB data acquisition routines in C for an RFID RF Immunity testing program.}
+        \resitem{
+            Managed time effectively between two projects in order to meet the deadlines of 
+            collaborators and senior members of the lab
+        }
+        \resitem{
+             Collaborated with members of the ProHits project at the University of Toronto 
+             to create Perl scripts for loading mass spectrometry (MS) data into a MySQL 
+             database, and for querying data in a format suitable for Significance Analysis 
+             of the Interactome (SAINT) software tools
+        }
+        \resitem{
+            Responded to constructive criticism during lab meetings by independently 
+            researching scientific journals on genome-wide association studies (GWAS) to 
+            determine a new approach for gathering candidate disease-genes
+        }
+
+		\resitem{
+             Surveyed and summarized scientific papers to determine top performing 
+             disease-gene prediction algorithms that make use of protein-protein interaction 
+             (PPI) networks, clarifying with authors when necessary
+        }
+        \resitem{
+             Implemented top algorithms using a combination of Perl and MATLAB, and 
+             evaluated their predictive performance using leave-one-out cross-validation on 
+             OMIM and HPRD datasets
+        }
+        \resitem{
+            Dramatically improved the runtime of a data pipeline for BLASTing UniProtKB 
+            proteins against PDB protein structures by parallelizing each step using a 
+            simple map-reduce pattern
+        }
 	\end{itemize}
 
-\item
-	\ressubheading{Dr. Andre Marziali's Biophysics Lab}{UBC}{NSERC Research Enginner}{May 2000 - Aug. 2000}
-	\begin{itemize}
-		\resitem{Developed novel technology for thermal cycling of DNA samples in sub-micro litre volumes.}
-		\resitem{Designed mechanical and electrical components for a 384-sample prototype system.}
-		\resitem{Wrote control software/drivers in LabVIEW for the gantry robot and plate stacker.}
-		\resitem{Built three prototypes for a 384 hole aluminium thermal cycling block.}
-		%\resitem{Sketched components using GenericCAD and AutoCAD 2000 Mechanical Desktop software.}
-		%\resitem{Tested and debugged major system components including a high-precision pipetting tool.}
-	\end{itemize}
-
-\item
-	\ressubheading{Nortel Networks, OPTera Solutions, Photonic Group}{Kanata, ON}{Research Engineer}{Jan. 1999 - Apr. 1999}
-	\begin{itemize}
-		\resitem{Designed a new method of measuring thermal and adiabatic chirp in 1.25/2.5 GHz Lasers.  This new method has now been patented by my supervisor Kihong Kim (U.S. patent \# 6,178,001).}
-		\resitem{Tested and characterized laser diodes, DWDM filters, and Mach-Zehnder Interferometers}
-		\resitem{Programmed automated DC Laser Testing and Mach-Zehnder Interferometer data acquisition and analysis programs using LabVIEW (over GPIB).}
-		%\resitem{Designed a solderless laser diode clamp, for clamping diode packages to PCB without soldering.}
-		\resitem{Constructed Mach-Zehnder Interferometers using bare fibre spliced together, and characterized them.}
-		\resitem{Was responsible for all lab testing routines involving lasers, filters, and interferometers.}
-	\end{itemize}
 \end{itemize}
 
-\resheading{School Projects}
+\resheading{Course Projects}
 \begin{itemize}
+
 \item
-	\ressubheading{SpectraVu Medical}{Vancouver, BC}{Engineering Physics Project Lab, APSC 479}{Sep. 2001 - Apr. 2002}
+
+	\ressubheading{CSC2228: Advanced Topics in Mobile and Pervasive Computing}{}{GPU Encrypt: AES Encryption on Mobile Devices}{Sept. 2012 - Dec. 2012}
 	\begin{itemize}
-		\resitem{	Designed and implemented a digital video processing system for lung cancer imaging,}
-		\resitem{Selected components (video DAC, ADC) and created schematics in OrCAD.}
-		\resitem{Implemented image processing functions and data control blocks in VHDL using an Altera ACEK1K FPGA.  Learned VHDL and MAX+PlusII development tool on my own time.}
-		%\resitem{Simulated the various blocks using MAX+PlusII simulation tool.}
+		\resitem{
+            Used the general purpose GPU programming language OpenCL to implement AES on a 
+            Nexus 4 Android phone, performing GPU-specific optimizations to maximize 
+            throughput.
+        }
+		\resitem{
+            Benchmarked OpenCL against a CPU-based OpenSSL implementation, achieving a 
+            1.79\% speedup using the GPU (smaller than desktop benchmarks due to the 
+            abudance of cores on desktop platforms)
+        }
 	\end{itemize}
 
 \item
-	\ressubheading{Analog Circuit Design and MOSFET Device Design}{}{Semiconductor Devices Course, EECE 480}{Sep. 2001 - Apr. 2002}
+	\ressubheading{CSC2604: Topics in Human-Centered and Interdisciplinary Computing}{}{Calm: Talking to Background Applications}{Sept. 2012 - Dec. 2012}
 	\begin{itemize}
-		\resitem{Designed a high-frequency cascode amplifier, simulated it using HSPICE, and did layout using Cadence Virtuoso Layout software.  Manufactured on a Gennum GA911 chip.}
-		\resitem{Designed and simulated a deep sub-micron (~70 nm channel) MOSFET using MEDICI.}
-	\end{itemize}
-
-\item
-	\ressubheading{Low-cost Optoelectronic Localizer}{}{Engineering Physics Project Lab, APSC 459}{Sep. 2000 - Apr. 2001}
-	\begin{itemize}
-		\resitem{Worked on the LoCOL (Low-cost Optoelectronic Localizer) project in a team of three.}
-		\resitem{Programmed a PIC microcontroller to control the timing of the three CCD cameras.}
-		\resitem{Designed power supply and re-built electrical circuits for the CCD sensors, processors.}
-		%\resitem{Helped build an enclosure for optics and electronics in the Student Machine Shop.}
-	\end{itemize}
-
-\item
-	\ressubheading{Other Projects}{}{UBC and at home}{1999-2000}
-	\begin{itemize}
-		\resitem{Designed and debugged a digital voltmeter using a Motorola 68000 processor.}
-		\resitem{Added features to the digital voltmeter including scrolling text, and a warning buzzer, which won 3rd place in the IEEE Voltmeter Competition.}
-		\resitem{Constructed and debugged a digital clock on a PCB for PHYS 159.}
-		\resitem{Built an AM short-wave radio at home, on a 2" $\times$ 2.5'' piece of breadboard.}
+		\resitem{
+            Explored voice-activated interfaces for aiding interaction with background 
+            desktop applications without leaving the foreground application.
+        }
+		\resitem{
+            Extended Instant Messenger with voice commands to RESPOND to the last message 
+            sender, Music Player to play a TRACK selected using keyboard based 
+            autocomplete, and Window Manager with tile-based windowing commands (e.g. PUT 
+            TOP LEFT)
+        }
+		\resitem{
+            Addressed sensitivity and false positives by intiating a conversation with an 
+            application of interest while ignoring others, using keyboard for free-form 
+            dictation, and recording macros for common operations
+        }
 	\end{itemize}
 
 \end{itemize}
 
-\resheading{Awards}
+\resheading{Awards and Interests}
 	\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
-		Faculty of Engineering Scholarship (\$2,300) & 2002\\
-		Ontario Graduate Scholarship (OGS) (\$15,000) & 2002-2003\\
-		Industrial NSERC Undergraduate Research Award (\$4500) & 2002\\
-		UBC OSI (Outstanding Student Initiative) Entrance Scholarship (\$10,000) & 1997-2002\\
-		Engineering Physics 50th Anniversary Scholarship (\$600) & 2001\\
-		Anne. M. Mack Scholarship (\$500) & 2001\\
-		NSERC Undergraduate Student Research Award (\$4000) & 2000\\
-		United Food and Commercial Workers Union, Local 1518 Scholarship (\$1000) & 1998\\
-		Top Senior Math Student Award & 1997\\
-		B.C. Provincial Exam Scholarship (\$1000) & 1997\\
-		B.C. Government Passport to Education (\$800) & 1997\\
-		James Whiteside Elementary Parent Advisory Committee Award (\$200) & 1997\\
+        President's Entrance Scholarship (for 90-94.9\% average) & 2007\\
+		The Governer General's Academic Medal & 2007\\
 \end{tabular*}
-
-\resheading{Skills}
-
-\begin{description}
-\item[Languages:]
-C/C++, \LaTeX, Java, SPICE, MEDICI (TCAD), VHDL/VHDL-AMS, 68000 and PIC Assembly
-\item[Operating Systems:]
-Linux (Debian), Solaris, UNIX, MacOS X, Windows 95/98/NT/2000/XP
-\item[Applications:]
-Mathematica, MatLab, GNU Octave, LabVIEW, Cadence, \LaTeX, OpenOffice, MS Office XP, OrCAD schematic capture \& PCB layout, Altera MAX+PlusII VHDL FPGA Design
-\item[Lab Skils:]
-Digital/Analog Scopes, Spectrum Analyzer, Function Generators
-\item[Fab Skills:]
-PECVD and sputtering deposition, UV lithography, wet etch, dry etch (RIE), mask aligner, step profiler, ellipsometry, infrared spectroscopy, x-ray diffraction
-\item[Miscellaneous:]
-software configuration management, strong verbal and written communication skills, excellent troubleshooting and debugging skills, exceptional problem solving skills, good teams skills
-\end{description}
-
-\resheading{Interests}
-
-\begin{description}
-\item[Academic:] Solid state devices,  nanotechnology, photonics, microcontrollers, RF/wireless
-\item[Sports:] Playing hockey and swimming
-\item[Computers:] Currently maintain two official Debian Linux packages, Mozilla beta tester, enjoy using and learning Linux systems, Building electronics projects at home, and writing JAVA software
-\item[Musical:] Playing guitar and piano
-\item[Membership:] Student member of IEEE since 1998, Materials Research Society member since 2002
-\item[Other:] Reading novels
-\end{description}
+        \begin{description}
+            \item[Languages:]
+                C/C++, \LaTeX, Java, ARM Assembly, Python, Scheme, OCaml, Haskell, MATLAB, 
+                R, JavaScript
+            \item[Interests:]
+                Fishing, attending concerts, gaming, functional programming, open source software
+        \end{description}
 
 \end{document}

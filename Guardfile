@@ -7,6 +7,6 @@
 guard :shell, :all_on_start => true do
   watch(/resume\.tex/) do |m| 
       puts "="*100
-      `make -f latex.mk resume`
+      `make -f latex.mk resume.pdf`
   end
 end
