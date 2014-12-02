@@ -4,7 +4,6 @@
 % (c) 2003-2007 David J. Grant <davidgrant-at-gmail.com> http://www.davidgrant.ca
 %
 % This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
-
 \documentclass[letterpaper,11pt]{article}
 
 %-----------------------------------------------------------
@@ -25,6 +24,7 @@
 %-----------------------------------------------------------
 %\usepackage{fullpage}
 \usepackage{shading}
+\usepackage{bold-extra}
 %\textheight=9.0in
 \pagestyle{empty}
 \raggedbottom
@@ -33,16 +33,31 @@
 
 %-----------------------------------------------------------
 %Custom commands
+
+\newcommand{\company}[1]{
+    \textbf{#1}
+}
+
+\newcommand{\heading}[1]{
+    \textsc{\textbf{#1}}
+}
+
+
+% title for the root sections (experience, education, etc) of the resume
+\newcommand*\resheading[1]{\subsection*{\heading{#1}}\vspace{0.3em}\nopagebreak[4]}
+% \newcommand\resheading[1]{\vspace{-0.3em}}
+
 \newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
-\newcommand{\resheading}[1]{{\large \parashade[.95]{roundcorners}{\textbf{#1 \vphantom{p\^{E}}}}}}
+% \newcommand{\resheading}[1]{{\large \parashade[.95]{roundcorners}{\textbf{#1 \vphantom{p\^{E}}}}}}
 \newcommand{\ressubheading}[4]{
 \begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
-		\textbf{#1} & #2 \\
+    
+		\company{#1} & #2 \\
 		\textit{#3} & \textit{#4} \\
 \end{tabular*}\vspace{-6pt}}
 \newcommand{\sickkids}[6]{
 \begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
-		\textbf{#1} & #2 \\
+		\company{#1} & #2 \\
 		\textit{#3} & \textit{#4} \\
 		 & \textit{#5} \\
 		 & \textit{#6} \\
@@ -52,7 +67,8 @@
 % 		\textbf{#1} \\
 % \end{tabular*}\vspace{-6pt}}
 \newcommand{\ressubheadingnodate}[1]{
-		\textbf{#1} \\
+		% \textbf{#1} \\
+		#1 \\
 }
 %-----------------------------------------------------------
 
@@ -66,7 +82,10 @@ Bulrington, ON L7R 2R1 \\
 \end{tabular*}
 \\
 
+\hrule
+
 \vspace{0.1in}
+
 
 \resheading{Education}
 \begin{itemize}
@@ -82,12 +101,12 @@ Bulrington, ON L7R 2R1 \\
         }
         \resitem{
             \textbf{Memory Encryption on Mobile Devices.} \\
-            I measure the performance and energy tradeoffs of protecting against 
+            I measured the performance and energy tradeoffs of protecting against 
             cold boot attacks on Android through the encryption of sensitive processes.  To 
             support background applications running while encrypted, I swap encrypted DRAM 
             pages into and out of a tightly managed decrypted secure memory.
             I extend encryption of user-level application pages to kernel stacks 
-            to prevent leaking AES state, tracking page accesses inside kernel using 
+            to prevent leaking AES state, tracking page accesses inside the kernel using 
             in-kernel page faults.
         }
 	\end{itemize}
@@ -113,85 +132,6 @@ Bulrington, ON L7R 2R1 \\
                 Himanshu Raj, Stefan Saroiu, Alec Wolman.
             } \\
             ASPLOS 2015 (To appear).
-        }
-	\end{itemize}
-
-\end{itemize}
-
-\resheading{Work Experience}
-\begin{itemize}
-\item
-
-	\ressubheading{Innovative Medicine, Mount Sinai Hopsital}{Toronto, ON}{Software Developer}{Oct. 2012 - Aug. 2012}
-	\begin{itemize}
-		\resitem{
-            Elicited requirements by sitting down with molecular biologists to formalize 
-            what heuristics they apply to determine genotypes from raw SNP data.
-        }
-		\resitem{
-            Constructed an in-house pipeline for processing raw SNP data into phenotypes 
-            (e.g. reactivity to drugs) that inform doctors to create customized therapeutic 
-            treatments.  
-        }
-        \resitem{
-            Pipeline was abstracted into a dependency graph of stages backed by database 
-            tables, allowing a declarative style of programming that maps well to real-time 
-            visualization of progress (per-stage table counts), and reports informing 
-            doctors how therapeutic recommendations were generated from raw SNP data.
-        }
-	\end{itemize}
-
-	\ressubheading{DemonWare}{Vancouver, BC}{Software Developer}{Sept. 2011 - Dec. 2011}
-	\begin{itemize}
-		\resitem{
-            Worked cooperatively and concurrently in a five person team, using Git version 
-            control to develop and merge features effectively, and JIRA to manage a pipeline of 
-            tasks
-        }
-        \resitem{
-            Quickly learned and utilized an in-house service-oriented Python framework to 
-            develop net services for games
-        }
-        \resitem{
-            Engineered a Bamboo integration test suite that involved compiling and packaging 
-            software into RPMs for rapid deployment, executing unit tests, and running an 
-            Erlang echo server for testing client/server interaction 
-        }
-	\end{itemize}
-
-	\sickkids{The Hospital for Sick Children}{Toronto, ON}{Research Trainee in 
-    Bioinformatics}{Sept. 2011 - Dec. 2011}{May 2010 - Aug. 2010}{Sept. 2009 - Dec. 2009}
-	\begin{itemize}
-        \resitem{
-            Managed time effectively between two projects in order to meet the deadlines of 
-            collaborators and senior members of the lab
-        }
-        \resitem{
-             Collaborated with members of the ProHits project at the University of Toronto 
-             to create Perl scripts for loading mass spectrometry (MS) data into a MySQL 
-             database, and for querying data in a format suitable for Significance Analysis 
-             of the Interactome (SAINT) software tools
-        }
-        \resitem{
-            Responded to constructive criticism during lab meetings by independently 
-            researching scientific journals on genome-wide association studies (GWAS) to 
-            determine a new approach for gathering candidate disease-genes
-        }
-
-		\resitem{
-             Surveyed and summarized scientific papers to determine top performing 
-             disease-gene prediction algorithms that make use of protein-protein interaction 
-             (PPI) networks, clarifying with authors when necessary
-        }
-        \resitem{
-             Implemented top algorithms using a combination of Perl and MATLAB, and 
-             evaluated their predictive performance using leave-one-out cross-validation on 
-             OMIM and HPRD datasets
-        }
-        \resitem{
-            Dramatically improved the runtime of a data pipeline for BLASTing UniProtKB 
-            proteins against PDB protein structures by parallelizing each step using a 
-            simple map-reduce pattern
         }
 	\end{itemize}
 
@@ -238,17 +178,82 @@ Bulrington, ON L7R 2R1 \\
 
 \end{itemize}
 
+\resheading{Work Experience}
+\begin{itemize}
+\item
+
+	\ressubheading{Innovative Medicine, Mount Sinai Hopsital}{Toronto, ON}{Software Developer}{Oct. 2012 - Aug. 2012}
+	\begin{itemize}
+		\resitem{
+            Elicited requirements by sitting down with molecular biologists to formalize 
+            what heuristics they apply to determine genotypes from raw SNP data.
+        }
+		\resitem{
+            Constructed an in-house pipeline for processing raw SNP data into phenotypes 
+            (e.g. reactivity to drugs) that inform doctors to create customized therapeutic 
+            treatments.  
+        }
+        \resitem{
+            Pipeline was abstracted into a dependency graph of stages backed by database 
+            tables, allowing a declarative style of programming,  real-time 
+            visualization of progress in a web front end, and reports informing 
+            doctors how therapeutic recommendations were generated from raw SNP data.
+        }
+        \resitem{
+            Delegated tasks to undergraduate coop students, getting them up to speed and 
+            contributing to the project.
+        }
+	\end{itemize}
+
+	\ressubheading{DemonWare}{Vancouver, BC}{Software Developer}{Sept. 2011 - Dec. 2011}
+	\begin{itemize}
+		\resitem{
+            Worked cooperatively and concurrently in a five person team, contributing a 
+            Bamboo continuous integration test suite that involved compiling and packaging 
+            software into RPMs for rapid deployment, and executing unit tests
+        }
+        \resitem{
+            Quickly learned and utilized an in-house service-oriented Python framework to 
+            develop net services for games
+        }
+	\end{itemize}
+
+	\sickkids{The Hospital for Sick Children}{Toronto, ON}{Research Trainee in 
+    Bioinformatics}{Sept. 2011 - Dec. 2011}{May 2010 - Aug. 2010}{Sept. 2009 - Dec. 2009}
+	\begin{itemize}
+		\resitem{
+             Surveyed and summarized scientific papers to determine top performing 
+             disease-gene prediction algorithms that make use of protein-protein interaction 
+             (PPI) networks, clarifying with authors when necessary
+        }
+        \resitem{
+             Implemented top algorithms using a combination of Perl and MATLAB, and 
+             evaluated their predictive performance using leave-one-out cross-validation on 
+             OMIM and HPRD datasets
+        }
+        \resitem{
+             Collaborated with members of the ProHits project at the University of Toronto 
+             to create Perl scripts for loading mass spectrometry (MS) data into a MySQL 
+             database, and for querying data in a format suitable for Significance Analysis 
+             of the Interactome (SAINT) software tools
+        }
+	\end{itemize}
+
+\end{itemize}
+
+\begin{minipage}{\textwidth}
 \resheading{Awards and Interests}
 	\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
         President's Entrance Scholarship (for 90-94.9\% average) & 2007\\
 		The Governer General's Academic Medal & 2007\\
 \end{tabular*}
         \begin{description}
-            \item[Languages:]
-                C/C++, \LaTeX, Java, ARM Assembly, Python, Scheme, OCaml, Haskell, MATLAB, 
-                R, JavaScript
+            \item[Technical Skills:]
+                C/C++, Java, ARM Assembly, Python, Ruby, Perl, Scheme, OCaml, Haskell, MATLAB, 
+                 R, Erlang, JavaScript, \LaTeX, Bootstrap, Linux
             \item[Interests:]
                 Fishing, attending concerts, gaming, functional programming, open source software
         \end{description}
+\end{minipage}
 
 \end{document}
