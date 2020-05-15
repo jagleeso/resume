@@ -120,7 +120,7 @@
 \begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
 \textbf{\Large James Gleeson}  & 647-298-9193\\
 499 Martha Street & jagleeso@gmail.com \\
-Bulrington, ON L7R 2R1 \\
+Burlington, ON L7R 2R1 \\
 \end{tabular*}
 \\
 
@@ -151,7 +151,7 @@ In contrast to prior work that is focussed on traditional supervised learning wo
 I used RL-Scope to survey the state-of-the-art RL workloads, and made two major discoveries about RL workloads that will impact future RL research:
 %spanning domains such as robotics and drone applications, and covering scale-up RL workloads that try maximize their use of hardware parallelism.
 \begin{enumerate}
-	\item \textbf{(1) CPU time is non-negligible in \textit{all} RL workloads:} regardless of application domain, simulation time on the CPU is always a large training bottleneck, accounting for at least 30.2\% of training time, with robotics workloads being substantially more simulation-bound than than other RL workloads with as much as 70.6\% in simulation.  Unforutnately, prior work focusses mostly on GPU optimizations which will be unable to substaintially reduce RL training time.
+	\item \textbf{(1) CPU time is non-negligible in \textit{all} RL workloads:} regardless of application domain, simulation time on the CPU is always a large training bottleneck, accounting for at least 30.2\% of training time, with robotics workloads being substantially more simulation-bound than than other RL workloads with as much as 70.6\% in simulation.  Unfortunately, prior work focusses mostly on GPU optimizations which will be unable to substantially reduce RL training time.
 %
 	\item \textbf{(2) Scale-up multi-process RL workloads are poorly optimized using today's coarse-grained profilers:}
 	scale-up multi-process RL workloads are poorly optimized since they attempt to increase GPU hardware parallelism by parallelizing inference operations but have been profiled using common off-the-shelf tools that only tell the developer that the GPU is in use, but provide zero indication of the true GPU hardware occupancy achieved by the workload.

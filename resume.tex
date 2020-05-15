@@ -93,7 +93,7 @@
 \begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
 \textbf{\Large James Gleeson}  & 647-298-9193\\
 499 Martha Street & jagleeso@gmail.com \\
-Bulrington, ON L7R 2R1 \\
+Burlington, ON L7R 2R1 \\
 \end{tabular*}
 \\
 
@@ -105,13 +105,45 @@ Bulrington, ON L7R 2R1 \\
 \resheading{Education}
 \begin{itemize}
 \item
-	% \ressubheading{University of Toronto}{Toronto, ON}{Ph.D, Computer Science}{Jan. 2015 - Present}
-	% \ressubheading{University of Toronto}{Toronto, ON}{M.Sc., Computer Science}{Sep. 2013 - Jan. 2015}
-	\mscphdheading{University of Toronto}{Toronto, ON}{Ph.D., Computer Science}{Jan. 2015 - Present}{M.Sc., Computer Science}{Sep. 2013 - Jan. 2015}
+    \ressubheading{University of Toronto}{Toronto, ON}{Ph.D, Computer Science}{Jan. 2015 - Present}
+    \begin{itemize}
+        \resitem{Co-advisors: Eyal de Lara, Gennady Pekhimenko}
+        \resitem{
+            \textbf{Profiling CPU/GPU usage in emerging reinforcement learning training workloads.} \\
+            The latest research in my PhD has focussed on building an open-source profiling tool called RL-Scope for 
+            performing cross-stack analysis of RL training workloads.  Unlike more commonly studied GPU-bound supervised 
+            learning workloads, RL training workloads must collect training data at runtime through simulation leading to 
+            a large CPU-bound component.  RL-Scope provides a fine-grained breakdown of time CPU/GPU time into GPU-side 
+            kernel execution, and CPU-side execution of high-level language code (Python) and low-level framework code 
+            (CUDA API calls, TensorFlow framework).  Using RL-Scope, we discovered at least 30.2\% of training time in 
+            today's state-of-the-art RL workloads time is CPU-bound in simulation, with robotics workloads spending up to 
+            70.6\% in simulation; hence, future ML systems research must optimize the CPU-bound portion of the ML software 
+            stack to speedup RL.  We also surveyed scale-up workloads that parallelize multiple inference requests to 
+            attempt to take advantage of GPU hardware parallelism, and discovered that coarse-grained GPU utilization 
+            metrics in off-the-shelf profiling tools led developers to make poor use of the available GPU hardware 
+            parallelism.
+        }
+        \resitem{
+            \textbf{Live migration of GPU compute workloads.} \\
+            The first publication of my PhD focussed on enabling efficient live migration of GPU compute workloads running 
+            inside a virtual machine instance.  Device passthrough using IOMMUs in today's cloud data center deployments 
+            allows assignment of GPUs to VM instances with zero overhead, but this simultaneously prevents hypervisor 
+            device interposition needed for enabling VM migration (e.g. during machine maintenance).  Our SYSTOR 2017 
+            paper on Crane showed how to enable live migration with low-overhead ($< 5.25\%$) by transparently 
+            implementing state-tracking and interposition at the user-level GPU programming API (OpenCL), and enabling 
+            continued use of a GPU during live migration by forwarding GPU API calls to a proxy domain running on the 
+            source machine.  In a followup HotCloud 2017 paper, we illustrated how GPU API level virtualization can be 
+            used to enable live migration between heterogeneous GPU models, enabling dynamic reallocation of GPUs in 
+            the cloud for use cases such as spot instances.
+        }
+    \end{itemize}
+\item
+\ressubheading{University of Toronto}{Toronto, ON}{M.Sc., Computer Science}{Sep. 2013 - Jan. 2015}
+%	\mscphdheading{University of Toronto}{Toronto, ON}{Ph.D., Computer Science}{Jan. 2015 - Present}{M.Sc., Computer Science}{Sep. 2013 - Jan. 2015}
 	\begin{itemize}
 		\resitem{Advisor: Eyal de Lara}
         \resitem{
-            My research so far has focused on operating system 
+            My masters research focused on operating system
             level solutions to mobile security problems that are efficient without 
             sacrificing user experience, and transparent to avoid complecting existing 
             application requirements.
@@ -142,13 +174,29 @@ Bulrington, ON L7R 2R1 \\
 
 	\ressubheadingnodate{Refereed Publications}
 	\begin{itemize}
+        \resitem{
+            \textbf{Heterogeneous GPU reallocation} \\
+            \textit{James Gleeson, Eyal de Lara} \\
+            HotCloud 2017.
+        }
+        \resitem{
+            \textbf{Crane: fast and migratable GPU passthrough for OpenCL applications} \\
+            \textit{James Gleeson, Daniel Kats, Charlie Mei, Eyal de Lara} \\
+            SYSTOR 2017.
+        }
 		\resitem{
             \textbf{Protecting Data on Smartphones and Tablets from Memory Attacks} \\
-            \textit{
-                Patrick J. Colp, Jiawen Zhang, James Gleeson, Sahil Suneja, Eyal de Lara, 
-                Himanshu Raj, Stefan Saroiu, Alec Wolman.
-            } \\
-            ASPLOS 2015 (To appear).
+            \textit{Patrick J. Colp, Jiawen Zhang, James Gleeson, Sahil Suneja, Eyal de Lara, Himanshu Raj, Stefan Saroiu, Alec Wolman.} \\
+            ASPLOS 2015.
+        }
+	\end{itemize}
+    \item
+	\ressubheadingnodate{Patents}
+	\begin{itemize}
+        \resitem{
+            \textbf{Method and apparatus for protecting kernel control-flow integrity using static binary instrumentation} \\
+            \textit{James Gleeson, Ahmed Azab, Wenbo Shen, and Rohan Bhutkar} \\
+            U.S. Patent 10,289,842, issued May 14, 2019.
         }
 	\end{itemize}
 
@@ -169,7 +217,7 @@ Bulrington, ON L7R 2R1 \\
 		\resitem{
             Benchmarked OpenCL against a CPU-based OpenSSL implementation, achieving a 
             1.79\% speedup using the GPU (smaller than desktop benchmarks due to the 
-            abudance of cores on desktop platforms)
+            abundance of cores on desktop platforms)
         }
 	\end{itemize}
 
@@ -187,7 +235,7 @@ Bulrington, ON L7R 2R1 \\
             TOP LEFT)
         }
 		\resitem{
-            Addressed sensitivity and false positives by intiating a conversation with an 
+            Addressed sensitivity and false positives by initiating a conversation with an
             application of interest while ignoring others, using keyboard for free-form 
             dictation, and recording macros for common operations
         }
@@ -198,6 +246,35 @@ Bulrington, ON L7R 2R1 \\
 \resheading{Work Experience}
 \begin{itemize}
 \item
+
+        \ressubheading{Microsoft Research}{Redmond, Washington}{Research Intern}{Sep. 2015 - Nov. 2015}
+        \begin{itemize}
+                \resitem{
+                    Worked on FaRM distributed shared memory computing platform (extending work in NSDI 2014 paper).  
+                    Existing implementation of fault tolerance in FaRM stores triply replicated copies of every object in 
+                    the system, requiring a total of three RDMA writes to the primary the two backup servers.  
+                    Investigated implementing erasure coding to reduce storage needed for storing replicas.  Considered 
+                    both block-based and object-based erasure coding schemes, settling on a block-based scheme to minimize 
+                    coordination amongst replicas on the critical path of transactions.
+                }
+        \end{itemize}
+
+        \ressubheading{Samsung Research America}{Mountain View, California}{Research Intern}{May. 2015 - Aug. 2015}
+        \begin{itemize}
+                \resitem{
+                    Worked on Samsung's ARM hypervisor based KNOX secure smartphone product.  Designed and implemented a 
+                    low-overhead and secure OS-level defense against kernel control-flow integrity attacks that attempts 
+                    to achieve privilege escalation by overwriting return addresses to chain together Turing complete 
+                    computations (return-oriented programming attacks).  
+                }
+                \resitem{
+                    Implemented fast XOR-based encryption of return addresses using static binary instrumentation of 
+                    compiled kernel binary.  Made use of abundant supply of ARM64 registers to securely stash XOR one-time 
+                    pad encryption key.  To protect against XOR key leakage to user-space, implemented re-generation of 
+                    encryption key and re-encryption of return addresses at each user-to-kernel entry (system calls) and 
+                    context switch.  This research led a software patent.
+                }
+        \end{itemize}
 
 	\ressubheading{Innovative Medicine, Mount Sinai Hopsital}{Toronto, ON}{Software Developer}{Oct. 2012 - Aug. 2013}
 	\begin{itemize}
@@ -264,11 +341,14 @@ Bulrington, ON L7R 2R1 \\
 \begin{itemize}
 \item
 
-	\ressubheading{University of Toronto}{Toronto, ON}{Teaching Assistant}{Sep. 2013 - Jan. 2015}
+	% \ressubheading{University of Toronto}{Toronto, ON}{Teaching Assistant}{Sep. 2013 - Jan. 2015, Jan. 2015 - Present}
+	\ressubheading{University of Toronto}{Toronto, ON}{Teaching Assistant}{Sep. 2013 - Present}
 	\begin{itemize}
 		\resitem{
             CSC108: Introduction to Computer Programming - \textit{Fall 2013, Winter 2013} \\
-            CSC209: Software Tools and Systems Programming - \textit{Fall 2014}
+            CSC209: Software Tools and Systems Programming - \textit{Fall 2014} \\
+            CSC369: Operating Systems - \textit{Winter 2016} \\
+            CSC2228: Advanced Topics in Mobile, Pervasive Computing, and Edge Computing - \textit{Fall 2019} \\
         }
 	\end{itemize}
 
@@ -277,6 +357,7 @@ Bulrington, ON L7R 2R1 \\
 
 \resheading{Awards and Interests}
 	\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+            NSERC Postgraduate Scholarships-Doctoral (PGSD) program & 2015 - 2018 \\
         President's Entrance Scholarship (for 90-94.9\% average) & 2007\\
 		The Governer General's Academic Medal & 2007\\
 \end{tabular*}
