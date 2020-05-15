@@ -18,9 +18,12 @@
 
 # http://vim.wikia.com/wiki/Compiling_LaTeX_from_Vim
 
-.PHONY: clean
+.PHONY: clean all
+
+all: one_page.pdf resume.pdf
 
 %.pdf: %.tex $(DEPENDS)
+	rubber -f --pdf -s --clean $<
 	rubber -f --pdf -s $<
 	rubber-info --check $<
 

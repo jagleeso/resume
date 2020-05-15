@@ -1,0 +1,191 @@
+% resume.tex
+%
+% (c) 2002 Matthew Boedicker <mboedick@mboedick.org> (original author) http://mboedick.org
+% (c) 2003-2007 David J. Grant <davidgrant-at-gmail.com> http://www.davidgrant.ca
+%
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+\documentclass[letterpaper,11pt]{article}
+
+%-----------------------------------------------------------
+%Margin setup
+
+\setlength{\voffset}{0.1in}
+\setlength{\paperwidth}{8.5in}
+\setlength{\paperheight}{11in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\textheight}{11in}
+\setlength{\textheight}{9.5in}
+% \setlength{\topmargin}{-0.50in}
+\setlength{\textwidth}{7in}
+\setlength{\topskip}{0in}
+
+% % \setlength{\topmargin}{-1.0in}
+% \setlength{\topmargin}{-0.25in}
+% % \setlength{\bottommargin}{-0.50in}
+% \setlength{\oddsidemargin}{-0.25in}
+% \setlength{\evensidemargin}{-0.25in}
+
+\usepackage{anysize}
+\marginsize{0.75in}{0.75in}{0.25in}{0.25in}
+
+%%
+%% ATC 2020 template (Usenix 2019)
+%%
+% refs and bib
+\usepackage{cite}               % order multiple entries in \cite{...}
+\usepackage{breakurl}           % break too-long urls in refs
+\usepackage{url}                % allow \url in bibtex for clickable links
+\usepackage{xcolor}             % color definitions, to be use for...
+\usepackage[]{hyperref}         % ...clickable refs within pdf...
+\hypersetup{                    % ...like so
+  colorlinks,
+  linkcolor={green!80!black},
+  citecolor={red!70!black},
+  urlcolor={blue!70!black}
+}
+
+%\usepackage{amssymb}
+%\usepackage{amsmath}
+%\usepackage{amsthm}
+%\usepackage{xparse}
+%\usepackage{tikz}
+
+% \asPercent
+\usepackage{pgfmath}
+\usepackage{siunitx}
+
+%-----------------------------------------------------------
+%\usepackage{fullpage}
+% \usepackage{shading}
+\usepackage{bold-extra}
+%\textheight=9.0in
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+%-----------------------------------------------------------
+%Custom commands
+
+\newcommand{\company}[1]{
+    \textbf{#1}
+}
+
+\newcommand{\heading}[1]{
+    \textsc{\textbf{#1}}
+}
+
+\newcommand{\asPercent}[1]{\pgfmathparse{100*#1}\num[round-mode=places,round-precision=1]{\pgfmathresult}\%}
+
+% title for the root sections (experience, education, etc) of the resume
+\newcommand*\resheading[1]{\subsection*{\heading{#1}}\vspace{0.3em}\nopagebreak[4]}
+% \newcommand\resheading[1]{\vspace{-0.3em}}
+
+\newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
+% \newcommand{\resheading}[1]{{\large \parashade[.95]{roundcorners}{\textbf{#1 \vphantom{p\^{E}}}}}}
+\newcommand{\ressubheading}[4]{
+\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+    
+		\company{#1} & #2 \\
+		\textit{#3} & \textit{#4} \\
+\end{tabular*}\vspace{-6pt}}
+\newcommand{\mscphdheading}[6]{
+\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+    
+		\company{#1} & #2 \\
+		\textit{#3} & \textit{#4} \\
+		\textit{#5} & \textit{#6} \\
+\end{tabular*}\vspace{-6pt}}
+\newcommand{\sickkids}[6]{
+\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+		\company{#1} & #2 \\
+		\textit{#3} & \textit{#4} \\
+		 & \textit{#5} \\
+		 & \textit{#6} \\
+\end{tabular*}\vspace{-6pt}}
+% \newcommand{\ressubheadingnodate}[4]{
+% \begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+% 		\textbf{#1} \\
+% \end{tabular*}\vspace{-6pt}}
+\newcommand{\ressubheadingnodate}[1]{
+		% \textbf{#1} \\
+		#1 \\
+}
+%-----------------------------------------------------------
+
+
+\begin{document}
+
+\begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
+\textbf{\Large James Gleeson}  & 647-298-9193\\
+499 Martha Street & jagleeso@gmail.com \\
+Bulrington, ON L7R 2R1 \\
+\end{tabular*}
+\\
+
+\hrule
+
+\vspace{0.1in}
+
+
+%\resheading{Plan of Study}
+\heading{Plan of Study}
+
+\setlength{\parindent}{1.5em}
+
+There have been several key enablers to advances in artificial intelligence applications such as image recognition. \textbf{(1) Deep convolutional architectures} exploit the compositional hierarchy in which features are learned by backpropagation, with earlier layer features (e.g., edges) being used to detect more high-level features (e.g., eyes and mouths in a face)~\cite{lecun2015deep}. In 2012, Alex Krizhevsky~\cite{krizhevsky2012imagenet} showed that training on a \textbf{(2) large data set} of 1.2 million high-resolution images scoured from the web allowed them to halve the top-5 error rate of the best competing image recognition models at the time.  Finally, to enable efficient training of large models on large data sets, researchers have \textbf{(3) scaled up computation} by repurposing GPU accelerators originally designed for accelerating graphics rendering to instead act as massive compute accelerators for evaluating neural network operations like convolutions and matrix multiplications.
+
+In my research, I have focussed on how we can continue \textbf{(3) scaling up computation} when applying deep neural networks to new application domains.  In particular, advances in deep learning have now begun advancing the state-of-the-art of Reinforcement Learning (RL).
+%~\cite{mnih2016asynchronous,wang2016sample,wu2017scalable,lillicrap2015continuous,ho2016generative,andrychowicz2017hindsight,schulman2017proximal,schulman2015trust}
+In the past decade RL algorithms been achieving and sometimes surpassing human performance in increasingly complex tasks, ranging from simple games like Atari~\cite{mnih2015human}, board-games with intractably large state-spaces such as Go~\cite{silver2017mastering}, and complex multiplayer strategy games like DotA 2~\cite{OpenAI_dota}.
+%
+RL algorithms are now being explored as candidate algorithms in increasingly complex industrial domains, including robotics~\cite{brockman2016openai,kober2013reinforcement}, autonomous driving~\cite{dosovitskiy2017carla,sallab2016end}, data center management~\cite{datacenterRL}, and drone applications~\cite{krishnan2019air}.
+%Finally, recent research into Simulation-to-Real transfer has shown that simulated environments can be used to gather experience for training that is transferable to real robotic tasks, such as dexterous manipulation of objects~\cite{chebotar2019closing,dexterous,akkaya2019solving} and autonomous driving~\cite{muller2018driving}.
+%
+
+Despite their promise, RL models are notoriously slow to train, with developers having to explore an enormous selection of RL algorithm variants and hyperparameters.  It is essential to reduce training time to allow ML researchers to iterate quickly when applying RL to emerging industrial domains.  To combat this challenge in my research, I have created a tool called RL-Scope that can discover and diagnose performance bottlenecks in RL training workloads, allowing ML and systems researchers to fix the root cause of performance anomalies.
+%
+In contrast to prior work that is focussed on traditional supervised learning workloads which are primarily GPU-bound, RL-Scope is able to provide cross-stack insights spanning both GPU-bound neural network operations and CPU-bound simulation code both within low-level framework code (e.g., TensorFlow) and high-level Python code that ML developers interface with directly.
+%
+I used RL-Scope to survey the state-of-the-art RL workloads, and made two major discoveries about RL workloads that will impact future RL research:
+%spanning domains such as robotics and drone applications, and covering scale-up RL workloads that try maximize their use of hardware parallelism.
+\begin{enumerate}
+	\item \textbf{(1) CPU time is non-negligible in \textit{all} RL workloads:} regardless of application domain, simulation time on the CPU is always a large training bottleneck, accounting for at least 30.2\% of training time, with robotics workloads being substantially more simulation-bound than than other RL workloads with as much as 70.6\% in simulation.  Unforutnately, prior work focusses mostly on GPU optimizations which will be unable to substaintially reduce RL training time.
+%
+	\item \textbf{(2) Scale-up multi-process RL workloads are poorly optimized using today's coarse-grained profilers:}
+	scale-up multi-process RL workloads are poorly optimized since they attempt to increase GPU hardware parallelism by parallelizing inference operations but have been profiled using common off-the-shelf tools that only tell the developer that the GPU is in use, but provide zero indication of the true GPU hardware occupancy achieved by the workload.
+\end{enumerate}
+%
+Upon publication, I will open-source RL-Scope to positively impact both ML researchers and ML practitioners by helping them locate and eliminate performance bottlenecks in RL training workloads.
+
+%, spending at least 70.6\% in simulation.  Second, operations typically considered GPU-heavy in SL workloads (i.e., inference, backpropagation) only spend at most \asPercent{0.141163009} of their time executing GPU kernels with the rest spent on the CPU in framework and CUDA API calls.  Finally, for
+%
+%collected using common tools and are a poor indicator of actual time spent executing GPU kernels on the GPU, whereas RL-Scope is able to identify the true GPU-bound time.
+%
+%
+%
+%I propose building a profiling tool that can help ML and systems developers
+% and remove computational overheads in their RL training.  Reducing the time it takes to train models is essential for
+%
+%
+%Unlike traditional supervised learning workloads which are primarily GPU-bound, RL workloads spend a large portion of their workload CPU-bound.
+
+
+
+%This is exacerbated when one considers the number of RL algorithms that developers must evaluate for each application (for example, OpenAI's repository has implemented 9 RL algorithms~\cite{baselines}), and the number of hyperparameters that they must tune for every algorithm (DQN alone has around 15 different hyperparameters that must be tuned~\cite{dqn-hyperparams-stable-baselines}).
+
+\bibliographystyle{plain}
+% \bibliography{\jobname}
+
+\pagebreak
+\resheading{References}
+%\heading{References}
+\begingroup
+\renewcommand{\section}[2]{}%
+%\renewcommand{\chapter}[2]{}% for other classes
+\bibliography{references}
+\endgroup
+
+
+\end{document}
