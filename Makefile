@@ -22,7 +22,7 @@
 
 all: one_page.pdf resume.pdf
 
-%.pdf: %.tex $(DEPENDS)
+%.pdf: %.tex $(DEPENDS) Makefile references.bib
 	rubber -f --pdf -s --clean $<
 	rubber -f --pdf -s $<
 	rubber-info --check $<
