@@ -20,7 +20,7 @@
 
 .PHONY: clean all
 
-all: one_page.pdf resume.pdf bell_ogs_2021_research_contrib.pdf
+all: resume.pdf bell_ogs_plan_of_study.pdf bell_ogs_research_contrib.pdf
 
 %.pdf: %.tex $(DEPENDS) Makefile references.bib
 	rubber -f --pdf -s --clean $<
