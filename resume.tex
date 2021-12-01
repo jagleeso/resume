@@ -39,6 +39,8 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
+\usepackage[hidelinks]{hyperref}
+
 %-----------------------------------------------------------
 %Custom commands
 
@@ -91,8 +93,9 @@
 \begin{document}
 
 \begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
-\textbf{\Large James Gleeson}  & 647-298-9193\\
-499 Martha Street & jagleeso@gmail.com \\
+\textbf{\Large James Gleeson}  & \href{mailto:jagleeso@gmail.com}{jagleeso@gmail.com}
+ \\
+499 Martha Street & \href{https://jagleeso.github.io}{https://jagleeso.github.io} \\
 Burlington, ON L7R 2R1 \\
 \end{tabular*}
 \\
@@ -175,18 +178,28 @@ Burlington, ON L7R 2R1 \\
 	\ressubheadingnodate{Refereed Publications}
 	\begin{itemize}
         \resitem{
+            \textbf{MoIL: Enabling Efficient Incremental Training on Edge Devices} \\
+            \textit{Jiacheng Yang, \textbf{James Gleeson}, Mostafa Elhoushi, Gennady Pekhimenko.} \\
+            HAET 2021.
+        }
+        \resitem{
+            \textbf{RL-Scope: Cross-Stack Profiling for Deep Reinforcement Learning Workloads} \\
+            \textit{\textbf{James Gleeson}, Srivatsan Krishnan, Moshe Gabel, Vijay Janapa Reddi, Eyal de Lara, Gennady Pekhimenko.} \\
+            MLSys 2021.
+        }
+        \resitem{
             \textbf{Heterogeneous GPU reallocation} \\
-            \textit{James Gleeson, Eyal de Lara} \\
+            \textit{\textbf{James Gleeson}, Eyal de Lara.} \\
             HotCloud 2017.
         }
         \resitem{
             \textbf{Crane: fast and migratable GPU passthrough for OpenCL applications} \\
-            \textit{James Gleeson, Daniel Kats, Charlie Mei, Eyal de Lara} \\
+            \textit{\textbf{James Gleeson}, Daniel Kats, Charlie Mei, Eyal de Lara.} \\
             SYSTOR 2017.
         }
 		\resitem{
             \textbf{Protecting Data on Smartphones and Tablets from Memory Attacks} \\
-            \textit{Patrick J. Colp, Jiawen Zhang, James Gleeson, Sahil Suneja, Eyal de Lara, Himanshu Raj, Stefan Saroiu, Alec Wolman.} \\
+            \textit{Patrick J. Colp, Jiawen Zhang, \textbf{James Gleeson}, Sahil Suneja, Eyal de Lara, Himanshu Raj, Stefan Saroiu, Alec Wolman.} \\
             ASPLOS 2015.
         }
 	\end{itemize}
