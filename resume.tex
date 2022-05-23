@@ -37,15 +37,16 @@
 %\RequirePackage{fullpage}
 % \RequirePackage{shading}
 \RequirePackage{bold-extra}
+\RequirePackage{xcolor}
 
 \RequirePackage{hyperref}
-%TEST
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
     filecolor=blue,      
     urlcolor=blue,
     pdftitle={James Gleeson Resume},
+    pdfauthor={James Gleeson},
     }
 
 %\textheight=9.0in
@@ -57,6 +58,18 @@
 %-----------------------------------------------------------
 %Custom commands
 
+% Remove section number prefix.
+% NOTE: This will still keep the PDF outline.
+% https://tex.stackexchange.com/a/493978
+\setcounter{secnumdepth}{0}
+
+% % NOTE: This approach to removing section number prefix leaves extra spaces at
+% % the start of the section title.
+% \makeatletter
+% \renewcommand\thesection{}
+% \renewcommand\thesubsection{}
+% \makeatother
+
 \newcommand{\company}[1]{%
     \textbf{#1}
 }
@@ -67,7 +80,7 @@
 
 
 % title for the root sections (experience, education, etc) of the resume
-\newcommand*\resheading[1]{\subsection*{\heading{#1}}\vspace{0.3em}\nopagebreak[4]}
+\newcommand*\resheading[1]{\subsection{\heading{#1}}\vspace{0.3em}\nopagebreak[4]}
 % \newcommand\resheading[1]{\vspace{-0.3em}}
 
 \newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
