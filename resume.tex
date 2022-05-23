@@ -9,6 +9,8 @@
 %-----------------------------------------------------------
 %Margin setup
 
+\newcommand{\BulletZeroLeftMargin}{1.5em}
+
 \setlength{\voffset}{0.1in}
 \setlength{\paperwidth}{8.5in}
 \setlength{\paperheight}{11in}
@@ -26,13 +28,26 @@
 % \setlength{\oddsidemargin}{-0.25in}
 % \setlength{\evensidemargin}{-0.25in}
 
-\usepackage{anysize}
+\RequirePackage{enumitem}
+
+\RequirePackage{anysize}
 \marginsize{0.75in}{0.75in}{0.25in}{0.25in}
 
 %-----------------------------------------------------------
-%\usepackage{fullpage}
-% \usepackage{shading}
-\usepackage{bold-extra}
+%\RequirePackage{fullpage}
+% \RequirePackage{shading}
+\RequirePackage{bold-extra}
+
+\RequirePackage{hyperref}
+%TEST
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+    pdftitle={James Gleeson Resume},
+    }
+
 %\textheight=9.0in
 \pagestyle{empty}
 \raggedbottom
@@ -42,11 +57,11 @@
 %-----------------------------------------------------------
 %Custom commands
 
-\newcommand{\company}[1]{
+\newcommand{\company}[1]{%
     \textbf{#1}
 }
 
-\newcommand{\heading}[1]{
+\newcommand{\heading}[1]{%
     \textsc{\textbf{#1}}
 }
 
@@ -81,10 +96,7 @@
 % \begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
 % 		\textbf{#1} \\
 % \end{tabular*}\vspace{-6pt}}
-\newcommand{\ressubheadingnodate}[1]{
-		% \textbf{#1} \\
-		#1 \\
-}
+\newcommand{\ressubheadingnodate}[1]{#1:}
 %-----------------------------------------------------------
 
 
@@ -92,8 +104,8 @@
 
 \begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
 \textbf{\Large James Gleeson}  & 647-298-9193\\
-499 Martha Street & jagleeso@gmail.com \\
-Burlington, ON L7R 2R1 \\
+Toronto, Ontario & jagleeso@gmail.com \\
+Canada & \href{https://jagleeso.github.io}{https://jagleeso.github.io} \\
 \end{tabular*}
 \\
 
@@ -103,44 +115,42 @@ Burlington, ON L7R 2R1 \\
 
 
 \resheading{Education}
-\begin{itemize}
+\begin{itemize}[leftmargin=\BulletZeroLeftMargin]
 \item
     \ressubheading{University of Toronto}{Toronto, ON}{Ph.D, Computer Science}{Jan. 2015 - Present}
-    \begin{itemize}
+    \begin{itemize}[leftmargin=\BulletZeroLeftMargin]
         \resitem{Co-advisors: Eyal de Lara, Gennady Pekhimenko}
         \resitem{
-            \textbf{Profiling CPU/GPU usage in emerging reinforcement learning training workloads.} \\
-            The latest research in my PhD has focussed on building an open-source profiling tool called RL-Scope for 
-            performing cross-stack analysis of RL training workloads.  Unlike more commonly studied GPU-bound supervised 
-            learning workloads, RL training workloads must collect training data at runtime through simulation leading to 
-            a large CPU-bound component.  RL-Scope provides a fine-grained breakdown of time CPU/GPU time into GPU-side 
-            kernel execution, and CPU-side execution of high-level language code (Python) and low-level framework code 
-            (CUDA API calls, TensorFlow framework).  Using RL-Scope, we discovered at least 30.2\% of training time in 
-            today's state-of-the-art RL workloads time is CPU-bound in simulation, with robotics workloads spending up to 
-            70.6\% in simulation; hence, future ML systems research must optimize the CPU-bound portion of the ML software 
-            stack to speedup RL.  We also surveyed scale-up workloads that parallelize multiple inference requests to 
-            attempt to take advantage of GPU hardware parallelism, and discovered that coarse-grained GPU utilization 
-            metrics in off-the-shelf profiling tools led developers to make poor use of the available GPU hardware 
-            parallelism.
+            \textbf{Optimizing data collection in deep reinforcement learning workloads.} \\
+            Based on my profiling insights from surveying RL workloads, I designed two optimizations for speeding up the time-consuming data collection phase of RL training: (1) \textit{GPU vectorization:} moves simulation to the GPU to run more parallel simulator instances than possible on the CPU, and (2) \textit{simulator kernel fusion:} fuses multiple simulation steps to run in a single GPU kernel launch to reduce global memory bandwidth requirements.
+            I demonstrated that GPU vectorization leads to a $1024\times$ speedup, and simulator kernel fusion leads to a $11\times$ speedup; furthermore, these speedups are combinable.
+            Unlike costly cluster scale-up solutions that can cost millions of dollars (e.g., AlphaGo, OpenAI's DotA 2), these optimizations are affordable since they are achievable on a single machine.
         }
         \resitem{
-            \textbf{Live migration of GPU compute workloads.} \\
-            The first publication of my PhD focussed on enabling efficient live migration of GPU compute workloads running 
-            inside a virtual machine instance.  Device passthrough using IOMMUs in today's cloud data center deployments 
-            allows assignment of GPUs to VM instances with zero overhead, but this simultaneously prevents hypervisor 
-            device interposition needed for enabling VM migration (e.g. during machine maintenance).  Our SYSTOR 2017 
-            paper on Crane showed how to enable live migration with low-overhead ($< 5.25\%$) by transparently 
-            implementing state-tracking and interposition at the user-level GPU programming API (OpenCL), and enabling 
-            continued use of a GPU during live migration by forwarding GPU API calls to a proxy domain running on the 
-            source machine.  In a followup HotCloud 2017 paper, we illustrated how GPU API level virtualization can be 
-            used to enable live migration between heterogeneous GPU models, enabling dynamic reallocation of GPUs in 
-            the cloud for use cases such as spot instances.
+            \textbf{Profiling CPU/GPU usage in deep reinforcement learning workloads.} \\
+            I built an open-source profiling tool called RL-Scope for performing cross-stack analysis of RL training workloads.
+            Unlike more commonly studied GPU-bound supervised learning workloads, RL training workloads must collect training data at runtime through simulation leading to 
+            a large CPU-bound component.  
+            RL-Scope provides a fine-grained breakdown of time CPU/GPU time into GPU-side kernel execution, and CPU-side execution of high-level language code (Python) and low-level framework code (CUDA API calls, TensorFlow framework).
+            Using RL-Scope, we discovered at least 38\% of training time in today's state-of-the-art RL workloads time is CPU-bound in simulation, with robotics workloads spending up to 74\% in simulation; hence, future ML systems research must optimize the CPU-bound portion of the ML software stack to speedup RL.  
+            We surveyed scale-up workloads that parallelize multiple inference requests in an attempt to exploit GPU hardware parallelism, but discovered that coarse-grained GPU utilization metrics in off-the-shelf profiling tools led developers to make poor use of the available GPU hardware parallelism.
+        }
+        \resitem{
+            \textbf{GPU reallocation through live migration of GPU compute workloads.} \\
+            The first publication of my PhD focussed on enabling efficient live migration of GPU compute workloads running inside a virtual machine instance.
+            Device passthrough using IOMMUs in today's cloud data center deployments allows assignment of GPUs to VM instances with zero overhead, but this simultaneously prevents hypervisor device interposition needed for enabling VM migration (e.g., during machine maintenance).
+            Our SYSTOR 2017 paper on Crane showed how to enable live migration with low-overhead ($< 5\%$) by transparently implementing state-tracking and interposition at the user-level GPU programming API (OpenCL), and enabling continued use of a GPU during live migration by forwarding GPU API calls to a proxy domain running on the source machine.
+            In a followup HotCloud 2017 paper, we illustrated how GPU API level virtualization can be used to enable live migration between heterogeneous GPU models, enabling dynamic reallocation of GPUs in the cloud.
+            GPU reallocation can avoid inefficient VM termination in spot instance offerings by moving running compute workloads to sufficient capacity GPUs that fall within the user's bidding price.
         }
     \end{itemize}
+
+\clearpage
+
 \item
 \ressubheading{University of Toronto}{Toronto, ON}{M.Sc., Computer Science}{Sep. 2013 - Jan. 2015}
 %	\mscphdheading{University of Toronto}{Toronto, ON}{Ph.D., Computer Science}{Jan. 2015 - Present}{M.Sc., Computer Science}{Sep. 2013 - Jan. 2015}
-	\begin{itemize}
+    \begin{itemize}[leftmargin=\BulletZeroLeftMargin]
 		\resitem{Advisor: Eyal de Lara}
         \resitem{
             My masters research focused on operating system
@@ -162,93 +172,69 @@ Burlington, ON L7R 2R1 \\
 
 \item
 	\ressubheading{University of Waterloo}{Waterloo, ON}{H.B.Sc. Computer Science: Specialization in Bioinformatics}{2007-2012}
-	\begin{itemize}
+    \begin{itemize}[leftmargin=\BulletZeroLeftMargin]
 		\resitem{Graduated with with Distinction, \textbf{89\%} cumulative average}
 	\end{itemize}
 
 \end{itemize}
 
 \resheading{Publications}
-\begin{itemize}
+\begin{itemize}[leftmargin=\BulletZeroLeftMargin]
 \item
 
 	\ressubheadingnodate{Refereed Publications}
-	\begin{itemize}
+    \begin{itemize}[leftmargin=\BulletZeroLeftMargin]
         \resitem{
-            \textbf{Heterogeneous GPU reallocation} \\
-            \textit{James Gleeson, Eyal de Lara} \\
+            \textbf{Optimizing Data Collection in Deep Reinforcement Learning} \\
+            \textit{\underline{James Gleeson}, Daniel Snider, Moshe Gabel, Eyal de Lara, Gennady Pekhimenko} \\
+            MLBench 2022.
+        }
+        \resitem{
+            \textbf{MoIL: Enabling Efficient Incremental Training on Edge Devices} \\
+            \textit{Jiacheng Yang, \underline{James Gleeson}, Mostafa Elhoushi, Gennady Pekhimenko} \\
+            HAET 2021.
+        }
+        \resitem{
+            \textbf{RL-Scope: Cross-Stack Profiling for Deep Reinforcement Learning Workloads} \\
+            \textit{\underline{James Gleeson}, Srivatsan Krishnan, Moshe Gabel, Vijay Janapa Reddi, Eyal de Lara, Gennady Pekhimenko} \\
+            MLSys 2021.
+        }
+        \resitem{
+            \textbf{Heterogeneous GPU Reallocation} \\
+            \textit{\underline{James Gleeson}, Eyal de Lara} \\
             HotCloud 2017.
         }
         \resitem{
-            \textbf{Crane: fast and migratable GPU passthrough for OpenCL applications} \\
-            \textit{James Gleeson, Daniel Kats, Charlie Mei, Eyal de Lara} \\
+            \textbf{Crane: Fast and Migratable GPU Passthrough for OpenCL Applications} \\
+            \textit{\underline{James Gleeson}, Daniel Kats, Charlie Mei, Eyal de Lara} \\
             SYSTOR 2017.
         }
 		\resitem{
             \textbf{Protecting Data on Smartphones and Tablets from Memory Attacks} \\
-            \textit{Patrick J. Colp, Jiawen Zhang, James Gleeson, Sahil Suneja, Eyal de Lara, Himanshu Raj, Stefan Saroiu, Alec Wolman.} \\
+            \textit{Patrick J. Colp, Jiawen Zhang, \underline{James Gleeson}, Sahil Suneja, Eyal de Lara, Himanshu Raj, Stefan Saroiu, Alec Wolman.} \\
             ASPLOS 2015.
         }
 	\end{itemize}
     \item
 	\ressubheadingnodate{Patents}
-	\begin{itemize}
+    \begin{itemize}[leftmargin=\BulletZeroLeftMargin]
         \resitem{
             \textbf{Method and apparatus for protecting kernel control-flow integrity using static binary instrumentation} \\
-            \textit{James Gleeson, Ahmed Azab, Wenbo Shen, and Rohan Bhutkar} \\
+            \textit{\underline{James Gleeson}, Ahmed Azab, Wenbo Shen, and Rohan Bhutkar} \\
             U.S. Patent 10,289,842, issued May 14, 2019.
         }
 	\end{itemize}
 
 \end{itemize}
 
-\resheading{Course Projects}
-\begin{itemize}
-
-\item
-
-	\ressubheading{CSC2228: Mobile and Pervasive Computing}{}{GPU Encrypt: AES Encryption on Mobile Devices}{Sept. 2013 - Dec. 2013}
-	\begin{itemize}
-		\resitem{
-            Used the general purpose GPU programming language OpenCL to implement AES on a 
-            Nexus 4 Android phone, performing GPU-specific optimizations to maximize 
-            throughput.
-        }
-		\resitem{
-            Benchmarked OpenCL against a CPU-based OpenSSL implementation, achieving a 
-            1.79\% speedup using the GPU (smaller than desktop benchmarks due to the 
-            abundance of cores on desktop platforms)
-        }
-	\end{itemize}
-
-\item
-	\ressubheading{CSC2604: Human-Centered and Interdisciplinary Computing}{}{Calm: Talking to Background Applications}{Sept. 2013 - Dec. 2013}
-	\begin{itemize}
-		\resitem{
-            Explored voice-activated interfaces for aiding interaction with background 
-            desktop applications without leaving the foreground application.
-        }
-		\resitem{
-            Extended Instant Messenger with voice commands to RESPOND to the last message 
-            sender, Music Player to play a TRACK selected using keyboard based 
-            autocomplete, and Window Manager with tile-based windowing commands (e.g. PUT 
-            TOP LEFT)
-        }
-		\resitem{
-            Addressed sensitivity and false positives by initiating a conversation with an
-            application of interest while ignoring others, using keyboard for free-form 
-            dictation, and recording macros for common operations
-        }
-	\end{itemize}
-
-\end{itemize}
+\clearpage
 
 \resheading{Work Experience}
-\begin{itemize}
+\begin{itemize}[leftmargin=\BulletZeroLeftMargin]
 \item
 
         \ressubheading{Microsoft Research}{Redmond, Washington}{Research Intern}{Sep. 2015 - Nov. 2015}
-        \begin{itemize}
+        \begin{itemize}[leftmargin=\BulletZeroLeftMargin]
                 \resitem{
                     Worked on FaRM distributed shared memory computing platform (extending work in NSDI 2014 paper).  
                     Existing implementation of fault tolerance in FaRM stores triply replicated copies of every object in 
@@ -260,7 +246,7 @@ Burlington, ON L7R 2R1 \\
         \end{itemize}
 
         \ressubheading{Samsung Research America}{Mountain View, California}{Research Intern}{May. 2015 - Aug. 2015}
-        \begin{itemize}
+        \begin{itemize}[leftmargin=\BulletZeroLeftMargin]
                 \resitem{
                     Worked on Samsung's ARM hypervisor based KNOX secure smartphone product.  Designed and implemented a 
                     low-overhead and secure OS-level defense against kernel control-flow integrity attacks that attempts 
@@ -277,7 +263,7 @@ Burlington, ON L7R 2R1 \\
         \end{itemize}
 
 	\ressubheading{Innovative Medicine, Mount Sinai Hopsital}{Toronto, ON}{Software Developer}{Oct. 2012 - Aug. 2013}
-	\begin{itemize}
+    \begin{itemize}[leftmargin=\BulletZeroLeftMargin]
 		\resitem{
             Elicited requirements by sitting down with molecular biologists to formalize 
             what heuristics they apply to determine genotypes from raw SNP data.
@@ -300,7 +286,7 @@ Burlington, ON L7R 2R1 \\
 	\end{itemize}
 
 	\ressubheading{DemonWare}{Vancouver, BC}{Software Developer}{Sept. 2011 - Dec. 2011}
-	\begin{itemize}
+    \begin{itemize}[leftmargin=\BulletZeroLeftMargin]
 		\resitem{
             Worked cooperatively and concurrently in a five person team, contributing a 
             Bamboo continuous integration test suite that involved compiling and packaging 
@@ -314,7 +300,7 @@ Burlington, ON L7R 2R1 \\
 
 	\sickkids{The Hospital for Sick Children}{Toronto, ON}{Research Trainee in 
     Bioinformatics}{Jan. 2011 - April 2011}{May 2010 - Aug. 2010}{Sept. 2009 - Dec. 2009}
-	\begin{itemize}
+    \begin{itemize}[leftmargin=\BulletZeroLeftMargin]
 		\resitem{
              Surveyed and summarized scientific papers to determine top performing 
              disease-gene prediction algorithms that make use of protein-protein interaction 
@@ -337,36 +323,89 @@ Burlington, ON L7R 2R1 \\
 
 \begin{minipage}{\textwidth}
 
-\resheading{Teaching Experience}
-\begin{itemize}
+\resheading{Course Projects}
+\begin{itemize}[leftmargin=\BulletZeroLeftMargin]
+
 \item
 
-	% \ressubheading{University of Toronto}{Toronto, ON}{Teaching Assistant}{Sep. 2013 - Jan. 2015, Jan. 2015 - Present}
-	\ressubheading{University of Toronto}{Toronto, ON}{Teaching Assistant}{Sep. 2013 - Present}
-	\begin{itemize}
+	\ressubheading{CSC2228: Mobile and Pervasive Computing}{}{GPU Encrypt: AES Encryption on Mobile Devices}{Sept. 2013 - Dec. 2013}
+    \begin{itemize}[leftmargin=\BulletZeroLeftMargin]
 		\resitem{
-            CSC108: Introduction to Computer Programming - \textit{Fall 2013, Winter 2013} \\
-            CSC209: Software Tools and Systems Programming - \textit{Fall 2014} \\
-            CSC369: Operating Systems - \textit{Winter 2016} \\
-            CSC2228: Advanced Topics in Mobile, Pervasive Computing, and Edge Computing - \textit{Fall 2019} \\
+            Used the general purpose GPU programming language OpenCL to implement AES on a 
+            Nexus 4 Android phone, performing GPU-specific optimizations to maximize 
+            throughput.
+        }
+		\resitem{
+            Benchmarked OpenCL against a CPU-based OpenSSL implementation, achieving a 
+            1.79\% speedup using the GPU (smaller than desktop benchmarks due to the 
+            abundance of cores on desktop platforms)
+        }
+	\end{itemize}
+
+\item
+	\ressubheading{CSC2604: Human-Centered and Interdisciplinary Computing}{}{Calm: Talking to Background Applications}{Sept. 2013 - Dec. 2013}
+    \begin{itemize}[leftmargin=\BulletZeroLeftMargin]
+		\resitem{
+            Explored voice-activated interfaces for aiding interaction with background 
+            desktop applications without leaving the foreground application.
+        }
+		\resitem{
+            Extended Instant Messenger with voice commands to RESPOND to the last message 
+            sender, Music Player to play a TRACK selected using keyboard based 
+            autocomplete, and Window Manager with tile-based windowing commands (e.g. PUT 
+            TOP LEFT)
+        }
+		\resitem{
+            Addressed sensitivity and false positives by initiating a conversation with an
+            application of interest while ignoring others, using keyboard for free-form 
+            dictation, and recording macros for common operations
         }
 	\end{itemize}
 
 \end{itemize}
 
+\resheading{Teaching Experience}
+\begin{itemize}[leftmargin=\BulletZeroLeftMargin]
+\item
+
+	% \ressubheading{University of Toronto}{Toronto, ON}{Teaching Assistant}{Sep. 2013 - Jan. 2015, Jan. 2015 - Present}
+	\ressubheading{University of Toronto}{Toronto, ON}{Teaching Assistant}{Sep. 2013 - Present}
+    \begin{itemize}[leftmargin=\BulletZeroLeftMargin]
+		\resitem{
+            CSC2228: Advanced Topics in Mobile, Pervasive Computing, and Edge Computing - \textit{Fall 2019} \\
+            CSC369: Operating Systems - \textit{Winter 2016} \\
+            CSC209: Software Tools and Systems Programming - \textit{Fall 2014} \\
+            CSC108: Introduction to Computer Programming - \textit{Fall 2013, Winter 2013} \\
+        }
+	\end{itemize}
+
+\end{itemize}
 
 \resheading{Awards and Interests}
-	\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
-            NSERC Postgraduate Scholarships-Doctoral (PGSD) program & 2015 - 2018 \\
-        President's Entrance Scholarship (for 90-94.9\% average) & 2007\\
-		The Governer General's Academic Medal & 2007\\
+\begin{tabular*}{6.5in}{l@{\extracolsep{\fill}}r}
+
+    % Bell Graduate Scholarship & 2021 - 2022 \\
+    % Vector Institute Research Grant & 2020 - 2021 \\
+    % Bell Graduate Scholarship & 2020 - 2021 \\
+    % Vector Institute Research Grant & 2019 - 2020 \\
+
+    % Bell Graduate Scholarship & 2020 - 2021, 2021 - 2022 \\
+    % Vector Institute Research Grant & 2019 - 2020, 2020 - 2021 \\
+
+    Bell Graduate Scholarship & 2021 - 2022  \\
+                              & 2020 - 2021 \\
+    Vector Institute Research Grant & 2020 - 2021   \\
+                                    & 2019 - 2020 \\
+
+    NSERC Postgraduate Scholarships-Doctoral (PGSD) program & 2015 - 2018 \\
+    President's Entrance Scholarship (for 90-94.9\% average) & 2007\\
+    The Governer General's Academic Medal & 2007\\
 \end{tabular*}
         \begin{description}
             \item[Technical Skills:]
-                C/C++, Java, ARM Assembly, Python, Ruby, Perl, Scheme, OCaml, Haskell, MATLAB, 
-                 R, Erlang, JavaScript, \LaTeX, Linux
+                C/C++, CUDA, PyTorch, TensorFlow, Docker, ARM Assembly, Python, Ruby, Perl, Java, JavaScript, MATLAB, MySQL, CMake, \LaTeX, Linux
             \item[Interests:]
-                Fishing, attending concerts, gaming, functional programming, open source software
+                Fishing, attending concerts, gaming, functional programming, open-source software
         \end{description}
 \end{minipage}
 

@@ -33,8 +33,8 @@
 % Single-spaced, with no more than 6 lines of type per inch
 % All margins set at a minimum of 3/4″ (1.87 cm)
 
-\usepackage{enumitem}
-\usepackage{anysize}
+\RequirePackage{enumitem}
+\RequirePackage{anysize}
 % \marginsize{left}{right}{top}{bottom}
 % OGS / Bell scholarship: All margins set at a minimum of 3/4" (1.87 cm)
 %\marginsize{0.75in}{0.75in}{0.25in}{0.25in}
@@ -44,11 +44,11 @@
 %% ATC 2020 template (Usenix 2019)
 %%
 % refs and bib
-\usepackage{cite}               % order multiple entries in \cite{...}
-\usepackage{breakurl}           % break too-long urls in refs
-\usepackage{url}                % allow \url in bibtex for clickable links
-\usepackage{xcolor}             % color definitions, to be use for...
-\usepackage[]{hyperref}         % ...clickable refs within pdf...
+\RequirePackage{cite}               % order multiple entries in \cite{...}
+\RequirePackage{breakurl}           % break too-long urls in refs
+\RequirePackage{url}                % allow \url in bibtex for clickable links
+\RequirePackage{xcolor}             % color definitions, to be use for...
+\RequirePackage[]{hyperref}         % ...clickable refs within pdf...
 \hypersetup{                    % ...like so
   colorlinks,
   linkcolor={green!80!black},
@@ -56,20 +56,20 @@
   urlcolor={blue!70!black}
 }
 
-%\usepackage{amssymb}
-%\usepackage{amsmath}
-%\usepackage{amsthm}
-%\usepackage{xparse}
-%\usepackage{tikz}
+%\RequirePackage{amssymb}
+%\RequirePackage{amsmath}
+%\RequirePackage{amsthm}
+%\RequirePackage{xparse}
+%\RequirePackage{tikz}
 
 % \asPercent
-\usepackage{pgfmath}
-\usepackage{siunitx}
+\RequirePackage{pgfmath}
+\RequirePackage{siunitx}
 
 %-----------------------------------------------------------
-%\usepackage{fullpage}
-% \usepackage{shading}
-\usepackage{bold-extra}
+%\RequirePackage{fullpage}
+% \RequirePackage{shading}
+\RequirePackage{bold-extra}
 %\textheight=9.0in
 \pagestyle{empty}
 \raggedbottom
